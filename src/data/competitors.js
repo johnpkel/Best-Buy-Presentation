@@ -20,12 +20,6 @@ export const BUYER_BELIEFS = [
   },
   {
     id: 4,
-    vendor: 'Trust Deficit',
-    belief: '55% of shoppers have abandoned a purchase over privacy concerns',
-    detail: '67% say "secure & trustworthy" is the #1 requirement — before relevance',
-  },
-  {
-    id: 5,
     vendor: 'Personalization Backfire',
     belief: '64% of shoppers have experienced personalization that felt creepy or invasive',
     detail: '70% saw ads for items they only discussed verbally — that\'s the line',

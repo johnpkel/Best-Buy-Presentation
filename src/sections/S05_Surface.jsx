@@ -5,7 +5,7 @@ import ArchitectureSlide from '../components/ArchitectureSlide'
 
 const S05_DataArchitecture = forwardRef(function S05_DataArchitecture({ isActive }, ref) {
   return (
-    <Section ref={ref} id="data-architecture" dark>
+    <Section ref={ref} id="data-architecture" dark isActive={isActive}>
       <FadeIn>
         <p className="section__label">The Data Activation Layer</p>
         <h2 className="section__title">

@@ -14,9 +14,9 @@ const INDUSTRY_DATA = [
   { industry: 'B2B / SaaS', pct: 8, color: '#94a3b8' },
 ]
 
-const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis(_, ref) {
+const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, ref) {
   return (
-    <Section ref={ref} id="identity-crisis">
+    <Section ref={ref} id="identity-crisis" isActive={isActive}>
       <FadeIn>
         <p className="section__label">Pillar #2: Identity Resolution</p>
         <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>

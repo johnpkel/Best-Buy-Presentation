@@ -1,8 +1,8 @@
 // The 7 Pillars of Customer Data Strategy (C360 framework)
 export const FUNNEL_STEPS = [
   { label: 'Governance: Data quality, compliance, ownership', active: false },
-  { label: 'Identity: Resolve anonymous + known into unified profiles', active: true },
-  { label: 'Interests & Behaviors: Capture intent signals in real-time', active: true },
+  { label: 'Identity: Resolve anonymous + known into unified profiles', active: false },
+  { label: 'Interests & Behaviors: Capture intent signals in real-time', active: false },
   { label: 'First-Party Data: Build owned data through value exchange', active: false },
   { label: 'Intelligence: Predictive scoring + next-best-action models', active: false },
   { label: 'Portability: Activate insights across every touchpoint', active: false },
@@ -24,11 +24,7 @@ export const DECISION_TABLE = [
     who: 'Personalization Lead',
     data: 'Static rules, not real-time context or intent',
   },
-  {
-    decision: '"Is this creepy or helpful?"',
-    who: 'Brand / CX',
-    data: '64% of shoppers say personalization has felt creepy — Contentstack Benchmark',
-  },
+
   {
     decision: '"Can we even use this data?"',
     who: 'Legal / Compliance',
@@ -75,7 +71,6 @@ export const SLACK_OUTBOUND = {
 1. 80% of our collected first-party data is dormant — never reaches the experience layer
 2. 64% of consumers report "creepy" personalization experiences (our NPS confirms this)
 3. Only 14% of our profiles qualify as C360 — but 95% of buyers demand control over their data
-4. 55% of shoppers have abandoned a purchase due to privacy concerns — that's revenue walking out the door
 
 We're sitting on a goldmine we can't spend. The gap between collection and activation is where we're bleeding revenue.`,
 }
@@ -93,8 +88,8 @@ McKinsey says getting this right can cut acquisition costs 50% and lift revenue 
 }
 
 export const CREATIVE_BRIEF = {
-  title: 'THE 7 PILLARS: From Zero to C360',
-  objective: 'Build a comprehensive first-party data strategy that powers real-time activation',
+  title: 'From Zero to C360',
+  objective: 'Build a comprehensive data strategy that powers real-time activation',
   audience: 'Enterprise teams stuck between "we have data" and "we can use data"',
   channels: [
     { name: '1. Governance', budget: 'Foundation', pct: 14 },
@@ -105,6 +100,4 @@ export const CREATIVE_BRIEF = {
     { name: '6. Intelligence', budget: 'AI / Scoring', pct: 14 },
     { name: '7. Portability', budget: 'Activation', pct: 12 },
   ],
-  theme: 'From zero to C360. From dormant to activated.',
-  tone: 'Practical, empathetic, architecturally grounded',
 }

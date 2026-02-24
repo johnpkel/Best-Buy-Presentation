@@ -7,7 +7,6 @@ import ToolScatter from '../components/ToolScatter'
 const STATS = [
   { value: '67%', label: 'say "secure & trustworthy" is the #1 requirement for personalization — Contentstack Benchmark' },
   { value: '66%', label: 'demand privacy respect as a precondition for sharing any data — Contentstack Benchmark' },
-  { value: '55%', label: 'have abandoned a purchase due to privacy concerns — Contentstack Benchmark' },
   { value: '64%', label: 'have experienced personalization that felt invasive or "creepy" — Contentstack Benchmark' },
 ]
 
@@ -18,13 +17,13 @@ const CREEPY_STATS = [
   { pct: 35, label: 'Brand knew information they never provided' },
 ]
 
-const S02_BrokenPipeline = forwardRef(function S02_BrokenPipeline(_, ref) {
+const S02_BrokenPipeline = forwardRef(function S02_BrokenPipeline({ isActive }, ref) {
   return (
-    <Section ref={ref} id="broken-pipeline">
+    <Section ref={ref} id="broken-pipeline" isActive={isActive}>
       <FadeIn>
         <p className="section__label">The Trust Gap</p>
         <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
-          Benchmark Takeaway #2: Privacy is the most critical element
+          Benchmark Takeaway #2: Privacy is critical 
         </p>
         <h2 className="section__title">
           The ROI is proven. But trust comes first.<br />
@@ -43,20 +42,6 @@ const S02_BrokenPipeline = forwardRef(function S02_BrokenPipeline(_, ref) {
           </FadeIn>
         ))}
       </div>
-
-      {/* What feels creepy */}
-      <FadeIn delay={0.4}>
-        <p className="section__body section__body--center" style={{ marginTop: '24px', marginBottom: '16px' }}>
-          What makes personalization feel "creepy"?
-        </p>
-        <div className="pain-tags">
-          {CREEPY_STATS.map((item) => (
-            <span key={item.label} className="pain-tag">
-              {item.pct}% — {item.label}
-            </span>
-          ))}
-        </div>
-      </FadeIn>
 
       {/* Tool scatter — disconnected systems */}
       <FadeIn delay={0.5}>

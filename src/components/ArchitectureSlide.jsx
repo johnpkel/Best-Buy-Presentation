@@ -1,26 +1,27 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { SectionContext } from './Section'
 
 /*
-  7-step animated architecture walkthrough over the base image.
-  Right-arrow advances steps 1→7, then lets the section advance.
-  Left-arrow reverses. Steps 1-4 = arrows, steps 5-7 = boxes.
+  8-step animated architecture walkthrough over the base image.
+  Right-arrow advances steps 1→8, then lets the section advance.
+  Left-arrow reverses. Step 1 = center box, steps 2-5 = arrows, steps 6-8 = boxes.
 
   viewBox coordinates are mapped to the base image layout
   (Contentstack Data & Insights pipeline diagram, ~1560×850 aspect).
 
-  The annotations match the "end" reference image exactly:
-
-  1  Arrow:  Streaming sources   →  Event Collection API  (diagonal ↘)
-  2  Arrow:  Cloud Connect       →  Data Warehouse (AWS)  (diagonal ↘)
-  3  Arrow:  Attribute Coll. API →  Identity Resolution   (straight ↓)
-  4  Arrow:  Identity Resolution →  through to Activation (long →)
-  5  Box:    Personalize   (DXP column)
-  6  Box:    Flows          (DXP column)
-  7  Box:    Recommendations (DXP column)
+  1  Box:    Center overview box (middle of diagram)
+  2  Arrow:  Streaming sources   →  Event Collection API  (diagonal ↘)
+  3  Arrow:  Cloud Connect       →  Data Warehouse (AWS)  (diagonal ↘)
+  4  Arrow:  Attribute Coll. API →  Identity Resolution   (straight ↓)
+  5  Arrow:  Identity Resolution →  through to Activation (long →)
+  6  Box:    Personalize   (DXP column)
+  7  Box:    Flows          (DXP column)
+  8  Box:    Recommendations (DXP column)
 */
 
 const STEP_LABELS = [
+  'The Contentstack Data & Insights architecture — a unified pipeline from ingestion to activation',
   'Streaming data sources (SDKs, webhooks, APIs) feed the Event Collection API in real-time',
   'Cloud Connect syncs data bidirectionally with your Data Warehouse',
   'The Attribute Collection API routes enrichment data into Identity Resolution',
@@ -52,51 +53,57 @@ const STEP_LABELS = [
 //   DXP Triggers:          x≈677, y≈219
 
 const STEPS = [
-  // 1: Streaming sources (left) → Event Collection API (diagonal ↘)
-  {
-    type: 'arrow',
-    from: [96, 130],
-    to: [152, 175],
-    numPos: [75, 82],
-  },
-  // 2: Cloud Connect → Data Warehouse (diagonal ↘)
-  {
-    type: 'arrow',
-    from: [375, 275],
-    to: [445, 345],
-    numPos: [430, 330],
-  },
-  // 3: Attribute Collection API → Identity Resolution (straight ↓)
-  {
-    type: 'arrow',
-    from: [366, 115],
-    to: [366, 170],
-    numPos: [440, 70],
-  },
-  // 4: Identity Resolution → AI Scoring → Activation (long →)
-  {
-    type: 'arrow',
-    from: [390, 186],
-    to: [580, 186],
-    numPos: [420, 155],
-  },
-  // 5: Box around "Personalize" in DXP column
+  // 1: Center overview box (middle of diagram)
   {
     type: 'box',
-    rect: [632, 115, 95, 30],
-    numPos: [740, 110],
+    rect: [410, 215, 55, 55],
+    numPos: [400, 280],
   },
-  // 6: Box around "Flows (Journey Orchestration)"
+  // 2: Streaming sources (left) → Event Collection API (diagonal ↘)
+  {
+    type: 'arrow',
+    from: [120, 130],
+    to: [400, 220],
+    numPos: [130, 100],
+  },
+  // 3: Cloud Connect → Data Warehouse (diagonal ↘)
+  {
+    type: 'arrow',
+    from: [520, 430],
+    to: [465, 285],
+    numPos: [485, 415],
+  },
+  // 4: Attribute Collection API → Identity Resolution (straight ↓)
+  {
+    type: 'arrow',
+    from: [510, 70],
+    to: [460, 200],
+    numPos: [540, 70],
+  },
+  // 5: Identity Resolution → AI Scoring → Activation (long →)
+  {
+    type: 'arrow',
+    from: [470, 220],
+    to: [700, 205],
+    numPos: [660, 145],
+  },
+  // 6: Box around "Personalize" in DXP column
   {
     type: 'box',
-    rect: [632, 150, 95, 30],
-    numPos: [740, 145],
+    rect: [760, 165, 95, 30],
+    numPos: [740, 175],
   },
-  // 7: Box around "Recommendations"
+  // 7: Box around "Flows (Journey Orchestration)"
   {
     type: 'box',
-    rect: [632, 185, 95, 30],
-    numPos: [740, 180],
+    rect: [760, 201, 95, 30],
+    numPos: [740, 215],
+  },
+  // 8: Box around "Recommendations"
+  {
+    type: 'box',
+    rect: [760, 235, 95, 30],
+    numPos: [740, 250],
   },
 ]
 
@@ -216,15 +223,16 @@ function BoxOverlay({ step, index }) {
 // ── Main component ──────────────────────────────────────────────
 
 export default function ArchitectureSlide({ isActive }) {
-  const [currentStep, setCurrentStep] = useState(0) // 0 = clean, 1-7 = visible
+  const { fullyRevealed } = useContext(SectionContext)
+  const [currentStep, setCurrentStep] = useState(0) // 0 = clean, 1-8 = visible
 
-  // Reset on leaving the slide
+  // Reset when leaving slide or when section un-reveals this child
   useEffect(() => {
-    if (!isActive) setCurrentStep(0)
-  }, [isActive])
+    if (!isActive || !fullyRevealed) setCurrentStep(0)
+  }, [isActive, fullyRevealed])
 
   const advance = useCallback(() => {
-    if (currentStep < 7) {
+    if (currentStep < 8) {
       setCurrentStep((s) => s + 1)
       return true           // consumed — block section advance
     }
@@ -240,8 +248,9 @@ export default function ArchitectureSlide({ isActive }) {
   }, [currentStep])
 
   // Capture-phase listener fires BEFORE the global scroll handler
+  // Only active after Section has fully revealed all children
   useEffect(() => {
-    if (!isActive) return
+    if (!isActive || !fullyRevealed) return
 
     const handleKey = (e) => {
       const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ']
@@ -264,7 +273,7 @@ export default function ArchitectureSlide({ isActive }) {
 
     window.addEventListener('keydown', handleKey, true)   // true = capture
     return () => window.removeEventListener('keydown', handleKey, true)
-  }, [isActive, advance, retreat])
+  }, [isActive, fullyRevealed, advance, retreat])
 
   return (
     <div className="arch-slide">
@@ -305,7 +314,7 @@ export default function ArchitectureSlide({ isActive }) {
         </div>
 
         <AnimatePresence mode="wait">
-          {currentStep > 0 && currentStep <= 7 ? (
+          {currentStep > 0 && currentStep <= 8 ? (
             <motion.p
               key={currentStep}
               className="arch-slide__label"
@@ -330,7 +339,7 @@ export default function ArchitectureSlide({ isActive }) {
           )}
         </AnimatePresence>
 
-        <p className="arch-slide__counter">{currentStep} / 7</p>
+        <p className="arch-slide__counter">{currentStep} / 8</p>
       </div>
     </div>
   )

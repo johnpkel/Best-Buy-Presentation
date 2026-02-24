@@ -25,32 +25,7 @@ export default function BriefCard() {
         <p>{CREATIVE_BRIEF.audience}</p>
       </div>
 
-      <div className="brief-card__section">
-        <span className="brief-card__label">The 7 Pillars</span>
-        <div className="brief-card__channels">
-          {CREATIVE_BRIEF.channels.map((ch) => (
-            <div key={ch.name} className="brief-card__channel">
-              <div className="brief-card__channel-bar">
-                <motion.div
-                  className="brief-card__channel-fill"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${ch.pct}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </div>
-              <span className="brief-card__channel-name">{ch.name}</span>
-              <span className="brief-card__channel-budget">{ch.budget}</span>
-            </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="brief-card__section">
-        <span className="brief-card__label">The Outcome</span>
-        <p className="brief-card__theme">"{CREATIVE_BRIEF.theme}"</p>
-        <p className="brief-card__tone">{CREATIVE_BRIEF.tone}</p>
-      </div>
     </motion.div>
   )
 }

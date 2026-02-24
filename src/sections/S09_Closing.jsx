@@ -13,9 +13,9 @@ const AI_BALANCE = [
   { label: 'Troubleshooting', pct: 55, prefer: 'Human', color: '#ef4444' },
 ]
 
-const S09_Closing = forwardRef(function S09_Closing(_, ref) {
+const S09_Closing = forwardRef(function S09_Closing({ isActive }, ref) {
   return (
-    <Section ref={ref} id="closing" dark className="section--closing">
+    <Section ref={ref} id="closing" dark className="section--closing" isActive={isActive}>
       <FadeIn>
         <p className="section__label">The Context Economy</p>
         <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
@@ -98,14 +98,7 @@ const S09_Closing = forwardRef(function S09_Closing(_, ref) {
       </FadeIn>
 
       <FadeIn delay={0.8}>
-        <div className="closing__cta">
-          <a
-            href="/demo/"
-            className="closing__cta-btn"
-          >
-            See how Contentstack activates your data →
-          </a>
-        </div>
+
       </FadeIn>
     </Section>
   )

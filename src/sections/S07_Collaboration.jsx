@@ -3,9 +3,9 @@ import FadeIn from '../components/FadeIn'
 import Section from '../components/Section'
 import SlackMessage from '../components/SlackMessage'
 
-const S07_RealTimeShift = forwardRef(function S07_RealTimeShift(_, ref) {
+const S07_RealTimeShift = forwardRef(function S07_RealTimeShift({ isActive }, ref) {
   return (
-    <Section ref={ref} id="real-time-shift" dark>
+    <Section ref={ref} id="real-time-shift" dark isActive={isActive}>
       <FadeIn>
         <p className="section__label">First-Party Data Paralysis</p>
         <h2 className="section__title">

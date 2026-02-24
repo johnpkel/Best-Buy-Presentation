@@ -12,16 +12,16 @@ const DATA_SHARING = [
   { type: 'Biometric data', pct: 5, willing: false },
 ]
 
-const S04_ArchitectureGap = forwardRef(function S04_ArchitectureGap(_, ref) {
+const S04_ArchitectureGap = forwardRef(function S04_ArchitectureGap({ isActive }, ref) {
   return (
-    <Section ref={ref} id="architecture-gap">
+    <Section ref={ref} id="architecture-gap" isActive={isActive}>
       <FadeIn>
         <p className="section__label">The First-Party Data Shift</p>
         <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
           Benchmark Takeaway #4: Buyers are very picky about the data they share
         </p>
         <h2 className="section__title">
-          Third-party cookies are dead. And buyers control the exchange.
+          Third-party cookies are dead. 
         </h2>
         <p className="section__subtitle">
           <strong>95%</strong> of consumers want control over what data brands collect.

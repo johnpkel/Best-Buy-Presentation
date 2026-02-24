@@ -59,7 +59,6 @@ const S00_Hero = forwardRef(function S00_Hero(_, ref) {
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
         >
-          <span>Scroll to explore</span>
           <motion.span
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}

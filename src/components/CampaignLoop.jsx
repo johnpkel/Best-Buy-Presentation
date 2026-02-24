@@ -1,4 +1,6 @@
+import { useState, useEffect, useCallback, useContext } from 'react'
 import { motion } from 'framer-motion'
+import { SectionContext } from './Section'
 
 const STEPS = [
   { label: 'Collect', sub: 'Events & Attributes', abbr: '📥', color: '#6366f1' },
@@ -10,7 +12,59 @@ const STEPS = [
   { label: 'Learn', sub: 'Feed Back Insights', abbr: '🔄', color: '#7c3aed' },
 ]
 
+// Total internal steps: 7 pipeline steps + 1 loop-back = 8
+const TOTAL_STEPS = STEPS.length + 1
+
 export default function CampaignLoop() {
+  const { fullyRevealed } = useContext(SectionContext)
+  const [revealedCount, setRevealedCount] = useState(0)
+
+  useEffect(() => {
+    if (!fullyRevealed) setRevealedCount(0)
+  }, [fullyRevealed])
+
+  const advance = useCallback(() => {
+    if (revealedCount < TOTAL_STEPS) {
+      setRevealedCount(c => c + 1)
+      return true
+    }
+    return false
+  }, [revealedCount])
+
+  const retreat = useCallback(() => {
+    if (revealedCount > 0) {
+      setRevealedCount(c => c - 1)
+      return true
+    }
+    return false
+  }, [revealedCount])
+
+  useEffect(() => {
+    if (!fullyRevealed) return
+
+    const handleKey = (e) => {
+      const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ']
+      const prevKeys = ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace']
+
+      if (nextKeys.includes(e.key)) {
+        if (advance()) {
+          e.preventDefault()
+          e.stopPropagation()
+          e.stopImmediatePropagation()
+        }
+      } else if (prevKeys.includes(e.key)) {
+        if (retreat()) {
+          e.preventDefault()
+          e.stopPropagation()
+          e.stopImmediatePropagation()
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKey, true)
+    return () => window.removeEventListener('keydown', handleKey, true)
+  }, [fullyRevealed, advance, retreat])
+
   return (
     <div className="campaign-pipeline">
       {/* Steps row */}
@@ -19,10 +73,17 @@ export default function CampaignLoop() {
           <motion.div
             key={step.label}
             className="campaign-pipeline__step"
+            animate={
+              i < revealedCount
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 16 }
+            }
             initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08, duration: 0.4 }}
+            transition={
+              i < revealedCount
+                ? { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+                : { duration: 0.2 }
+            }
           >
             <div
               className="campaign-pipeline__icon"
@@ -34,27 +95,31 @@ export default function CampaignLoop() {
             <span className="campaign-pipeline__sub">{step.sub}</span>
 
             {i < STEPS.length - 1 && (
-              <motion.span
+              <span
                 className="campaign-pipeline__arrow"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.4 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 + 0.1 }}
+                style={{ opacity: i + 1 < revealedCount ? 0.4 : 0 }}
               >
                 →
-              </motion.span>
+              </span>
             )}
           </motion.div>
         ))}
       </div>
 
-      {/* U-shaped loop-back */}
+      {/* U-shaped loop-back — reveals as the last step */}
       <motion.div
         className="campaign-pipeline__loop"
+        animate={
+          revealedCount >= TOTAL_STEPS
+            ? { opacity: 1 }
+            : { opacity: 0 }
+        }
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.7, duration: 0.5 }}
+        transition={
+          revealedCount >= TOTAL_STEPS
+            ? { duration: 0.5, ease: 'easeOut' }
+            : { duration: 0.2 }
+        }
       >
         <svg
           className="campaign-pipeline__loop-svg"

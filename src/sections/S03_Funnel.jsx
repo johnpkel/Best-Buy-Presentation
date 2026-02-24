@@ -3,9 +3,9 @@ import FadeIn from '../components/FadeIn'
 import Section from '../components/Section'
 import FunnelDiagram from '../components/FunnelDiagram'
 
-const S03_FourBarriers = forwardRef(function S03_FourBarriers(_, ref) {
+const S03_FourBarriers = forwardRef(function S03_FourBarriers({ isActive }, ref) {
   return (
-    <Section ref={ref} id="four-barriers" dark>
+    <Section ref={ref} id="four-barriers" dark isActive={isActive}>
       <FadeIn>
         <p className="section__label">The 7 Pillars of C360</p>
         <h2 className="section__title">

@@ -4,14 +4,13 @@ import Section from '../components/Section'
 import BriefCard from '../components/BriefCard'
 import CampaignLoop from '../components/CampaignLoop'
 
-const S08_ActivationPlaybook = forwardRef(function S08_ActivationPlaybook(_, ref) {
+const S08_ActivationPlaybook = forwardRef(function S08_ActivationPlaybook({ isActive }, ref) {
   return (
-    <Section ref={ref} id="activation-playbook">
+    <Section ref={ref} id="activation-playbook" isActive={isActive}>
       <FadeIn>
-        <p className="section__label">The Roadmap</p>
+        <p className="section__label">Your Roadmap</p>
         <h2 className="section__title">
-          The 7 Pillars of Customer Data Strategy.<br />
-          From zero to C360 — from dormant to activated.
+          From dormant to activated
         </h2>
       </FadeIn>
 

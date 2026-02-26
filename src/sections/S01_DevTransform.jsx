@@ -7,7 +7,7 @@ const S01_DataParadox = forwardRef(function S01_DataParadox({ isActive }, ref) {
   return (
     <Section ref={ref} id="data-paradox" dark isActive={isActive}>
       <FadeIn>
-        <p className="section__label">The Data Paradox</p>
+      <h2 className="section__title">Most loops are open</h2>
         <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
           Benchmark Takeaway #1: Buyers have a positive view of personalization
         </p>
@@ -34,7 +34,7 @@ const S01_DataParadox = forwardRef(function S01_DataParadox({ isActive }, ref) {
           <h3 className="split__heading split__heading--glow">What Companies Deliver</h3>
           <p className="split__text">
             Almost <strong><i>nothing</i></strong> in real-time. Data flows into the warehouse but never back to
-            the experience layer. <strong>This is data paralysis.</strong>
+            the experience layer.
           </p>
           <motion.div
             className="split__formula"

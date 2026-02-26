@@ -51,7 +51,7 @@ const S00_Hero = forwardRef(function S00_Hero(_, ref) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
-          Why most DXP efforts fail — and how to fix them.
+
         </motion.p>
         <motion.div
           className="hero__scroll-hint"

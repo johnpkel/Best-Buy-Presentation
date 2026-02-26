@@ -62,6 +62,45 @@ const MOCKS = [
     <button className="qs-mock__cta qs-mock__cta--amber">Shop Now</button>
     <p className="qs-social__loop-note">BUT I JUST BOUGHT THIS!!</p>
   </div>,
+
+  // 4 — Apple TV Ad
+  <div className="qs-mock qs-social">
+    <div className="qs-social__header">
+      <div className="qs-social__avatar">AB</div>
+      <div>
+        <span className="qs-social__brand">Big Box Store</span>
+        <span className="qs-social__sponsored">Sponsored</span>
+      </div>
+    </div>
+    <img className="qs-mock__img" src="/appletv.jpg" alt="Product creative — Apple TV ad" />
+    <button className="qs-mock__cta">Shop Now</button>
+  </div>,
+
+  // 5 — Frame Frame Ad
+  <div className="qs-mock qs-social">
+    <div className="qs-social__header">
+      <div className="qs-social__avatar">AB</div>
+      <div>
+        <span className="qs-social__brand">Big Box Store</span>
+        <span className="qs-social__sponsored">Sponsored</span>
+      </div>
+    </div>
+    <img className="qs-mock__img" src="/frame%20frame.jpeg" alt="Product creative — Frame ad" />
+    <button className="qs-mock__cta">Shop Now</button>
+  </div>,
+
+  // 6 — HomePod Ad
+  <div className="qs-mock qs-social">
+    <div className="qs-social__header">
+      <div className="qs-social__avatar">AB</div>
+      <div>
+        <span className="qs-social__brand">Big Box Store</span>
+        <span className="qs-social__sponsored">Sponsored</span>
+      </div>
+    </div>
+    <img className="qs-mock__img" src="/homepod.jpeg" alt="Product creative — HomePod ad" />
+    <button className="qs-mock__cta">Shop Now</button>
+  </div>,
 ]
 
 function QuickStoryMocks() {
@@ -89,7 +128,7 @@ function QuickStoryMocks() {
       const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ']
       const prevKeys = ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace']
 
-      if (nextKeys.includes(e.key) && stepRef.current < 3) {
+      if (nextKeys.includes(e.key) && stepRef.current < MOCKS.length - 1) {
         stepRef.current += 1
         setStep(stepRef.current)
         e.preventDefault()
@@ -109,17 +148,19 @@ function QuickStoryMocks() {
   }, [isActive, fullyRevealed])
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={step}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {MOCKS[step]}
-      </motion.div>
-    </AnimatePresence>
+    <div className="qs-mocks-container">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={step}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {MOCKS[step]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   )
 }
 

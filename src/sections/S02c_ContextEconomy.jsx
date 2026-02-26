@@ -126,8 +126,7 @@ const S02c_ContextEconomy = forwardRef(function S02c_ContextEconomy({ isActive }
         <h2 className="section__title">The Context Economy</h2>
         <p className="section__subtitle">
           Context isn't a moment in time, or a flash in the pan. It's the
-          sum total of an individual within your sphere of influence — and
-          it's the most valuable currency you have.
+          sum total of an individual within your sphere of influence. Context is data.
         </p>
       </FadeIn>
 

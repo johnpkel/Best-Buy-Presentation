@@ -18,12 +18,7 @@ export const BUYER_BELIEFS = [
     belief: 'Our pipeline refreshes daily — insights are stale before they arrive',
     detail: 'Activation requires millisecond utility, not 24-hour batch jobs',
   },
-  {
-    id: 4,
-    vendor: 'Personalization Backfire',
-    belief: '64% of shoppers have experienced personalization that felt creepy or invasive',
-    detail: '70% saw ads for items they only discussed verbally — that\'s the line',
-  },
+
 ]
 
 // Barriers impact table

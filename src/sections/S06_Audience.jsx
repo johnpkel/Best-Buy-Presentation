@@ -2,45 +2,48 @@ import { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import FadeIn from '../components/FadeIn'
 import Section from '../components/Section'
-import AudienceBars from '../components/AudienceBars'
+import ToolScatter from '../components/ToolScatter'
 
-const INDUSTRY_DATA = [
-  { industry: 'Food / Restaurants', pct: 54, color: '#22c55e' },
-  { industry: 'Retail / E-commerce', pct: 41, color: '#3b82f6' },
-  { industry: 'Media / Streaming', pct: 41, color: '#8b5cf6' },
-  { industry: 'Travel / Hospitality', pct: 37, color: '#f59e0b' },
-  { industry: 'Healthcare / Wellness', pct: 31, color: '#06b6d4' },
-  { industry: 'Banking / Insurance', pct: 22, color: '#6366f1' },
-  { industry: 'B2B / SaaS', pct: 8, color: '#94a3b8' },
+const BEHAVIORAL_SCORES = [
+  { name: 'Propensity', desc: 'Likelihood to return', score: 82, color: '#6366f1' },
+  { name: 'Intensity', desc: 'Depth of engagement per session', score: 74, color: '#818cf8' },
+  { name: 'Momentum', desc: 'Rate of engagement change', score: 68, color: '#a78bfa' },
+  { name: 'Recency', desc: 'How recently they engaged', score: 91, color: '#34d399' },
+  { name: 'Frequency', desc: 'Consistency of interactions', score: 56, color: '#22c55e' },
+  { name: 'Quantity', desc: 'Cumulative lifetime activity', score: 63, color: '#f59e0b' },
+  { name: 'Maturity', desc: 'Customer relationship age', score: 45, color: '#fb923c' },
+  { name: 'Volatility', desc: 'Stability of behavior patterns', score: 31, color: '#f472b6' },
+  { name: 'Consistency', desc: 'Regularity of engagement', score: 58, color: '#38bdf8' },
 ]
 
 const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, ref) {
   return (
     <Section ref={ref} id="identity-crisis" isActive={isActive}>
       <FadeIn>
-        <p className="section__label">Pillar #2: Identity Resolution</p>
-        <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
-          Benchmark Takeaway #3: Food and retail top consumer wish lists for personalization
-        </p>
+        <p className="section__label">Identity Resolution</p>
         <h2 className="section__title">
-          90% of your visitors are ghosts.<br />
-          You can't personalize what you can't identify.
+          Speaking of context...90% of your visitors are ghosts.
         </h2>
+        <p className="section__subtitle">
+          You can't personalize what you can't identify. And you can't identify
+          what you can't connect.
+        </p>
       </FadeIn>
 
       <FadeIn delay={0.2}>
-        <AudienceBars />
+        <ToolScatter assembled={false} />
       </FadeIn>
 
-      {/* Industry receptiveness */}
+      {/* Behavioral scoring */}
       <FadeIn delay={0.35}>
         <p className="section__body section__body--center" style={{ marginTop: '24px', marginBottom: '16px' }}>
-          Where consumers want personalization most:
+          You'll want some sort of behavioral scoring & lookalike modeling — computed
+          continuously, normalized 0–100:
         </p>
-        <div style={{ maxWidth: '520px', margin: '0 auto' }}>
-          {INDUSTRY_DATA.map((item, i) => (
+        <div style={{ maxWidth: '560px', margin: '0 auto' }}>
+          {BEHAVIORAL_SCORES.map((item, i) => (
             <motion.div
-              key={item.industry}
+              key={item.name}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -51,33 +54,31 @@ const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, 
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 + i * 0.06 }}
+              transition={{ delay: 0.4 + i * 0.04 }}
             >
-              <span style={{ width: '140px', textAlign: 'right', color: 'var(--text-secondary)', flexShrink: 0 }}>
-                {item.industry}
+              <span style={{ width: '100px', textAlign: 'right', color: item.color, fontWeight: 600, flexShrink: 0 }}>
+                {item.name}
               </span>
               <div style={{ flex: 1, height: '18px', background: 'rgba(255,255,255,0.06)', borderRadius: '4px', overflow: 'hidden' }}>
                 <motion.div
                   style={{ height: '100%', background: item.color, borderRadius: '4px', opacity: 0.8 }}
                   initial={{ width: 0 }}
-                  whileInView={{ width: `${item.pct}%` }}
+                  whileInView={{ width: `${item.score}%` }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 + i * 0.06, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: 0.5 + i * 0.04, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 />
               </div>
-              <span style={{ width: '36px', fontWeight: 600, color: item.color }}>{item.pct}%</span>
+              <span style={{ width: '32px', fontWeight: 700, color: 'var(--text-primary)', textAlign: 'right' }}>{item.score}</span>
+              <span style={{ width: '190px', color: 'var(--text-muted)', fontSize: '11px', flexShrink: 0 }}>
+                {item.desc}
+              </span>
             </motion.div>
           ))}
         </div>
       </FadeIn>
 
       <FadeIn delay={0.7}>
-        <p className="section__body section__body--center" style={{ marginTop: '20px' }}>
-          Identity resolution combines deterministic identifiers (hashed emails,
-          CRM IDs) with probabilistic signals (cookies, device IDs) to create a
-          unified C360 profile. The industries where consumers want personalization most
-          are the same ones generating the richest first-party data — if you can connect it.
-        </p>
+
       </FadeIn>
     </Section>
   )

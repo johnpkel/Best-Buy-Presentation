@@ -1213,26 +1213,31 @@
   margin-top: 12px;
 }
 
-.closing__cta {
-  margin-top: 32px;
+.closing__impact {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin: 24px 0 8px;
 }
 
-.closing__cta-btn {
-  display: inline-block;
-  padding: 16px 40px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.2s ease;
+.closing__impact-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.closing__cta-btn:hover {
-  background: var(--accent-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--accent-glow);
+.closing__impact-value {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.closing__impact-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ── Navigation Dots ──────────────────────────────────────────── */
@@ -2304,6 +2309,18 @@
   letter-spacing: 0.5px;
   padding: 3px 10px;
   border-radius: 10px;
+}
+
+.bandit__card--struck .bandit__card-title,
+.bandit__card--struck p,
+.bandit__card--struck .bandit__verdict {
+  text-decoration: line-through;
+  text-decoration-color: rgba(239, 68, 68, 0.7);
+  text-decoration-thickness: 2px;
+}
+
+.bandit__card--struck {
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 .bandit__verdict--warn {

@@ -12,12 +12,12 @@ import S04_Competitors from './sections/S04_Competitors'
 import S05_Surface from './sections/S05_Surface'
 import S06_Audience from './sections/S06_Audience'
 import S09b_JourneyOrchestration from './sections/S09b_JourneyOrchestration'
-import S07_Collaboration from './sections/S07_Collaboration'
+// import S07_Collaboration from './sections/S07_Collaboration'
 import S08_BriefToCampaign from './sections/S08_BriefToCampaign'
 import S10_FuturePuck from './sections/S10_FuturePuck'
 import S09_Closing from './sections/S09_Closing'
 
-const SECTION_COUNT = 15
+const SECTION_COUNT = 14
 
 export default function App() {
   const { currentSection, registerRef, scrollTo } = useScrollSections(SECTION_COUNT)
@@ -29,17 +29,17 @@ export default function App() {
       <S01_DevTransform ref={registerRef(2)} isActive={currentSection === 2} />
       <S02b_WhyPersonalize ref={registerRef(3)} isActive={currentSection === 3} />
       <S02c_ContextEconomy ref={registerRef(4)} isActive={currentSection === 4} />
+      <S06_Audience ref={registerRef(5)} isActive={currentSection === 5} />
       {/* <S02_MarketingPain ref={registerRef()} isActive={currentSection === } /> */}
-      <S03_Funnel ref={registerRef(5)} isActive={currentSection === 5} />
-      <S03b_FunnelQuestions ref={registerRef(6)} isActive={currentSection === 6} />
-      <S04_Competitors ref={registerRef(7)} isActive={currentSection === 7} />
-      <S05_Surface ref={registerRef(8)} isActive={currentSection === 8} />
-      <S06_Audience ref={registerRef(9)} isActive={currentSection === 9} />
+      <S03_Funnel ref={registerRef(6)} isActive={currentSection === 6} />
+      <S03b_FunnelQuestions ref={registerRef(7)} isActive={currentSection === 7} />
+      <S04_Competitors ref={registerRef(8)} isActive={currentSection === 8} />
+      <S05_Surface ref={registerRef(9)} isActive={currentSection === 9} />
       <S09b_JourneyOrchestration ref={registerRef(10)} isActive={currentSection === 10} />
-      <S07_Collaboration ref={registerRef(11)} isActive={currentSection === 11} />
-      <S08_BriefToCampaign ref={registerRef(12)} isActive={currentSection === 12} />
-      <S10_FuturePuck ref={registerRef(13)} isActive={currentSection === 13} />
-      <S09_Closing ref={registerRef(14)} isActive={currentSection === 14} />
+      {/* <S07_Collaboration ref={registerRef()} isActive={currentSection === } /> */}
+      <S08_BriefToCampaign ref={registerRef(11)} isActive={currentSection === 11} />
+      <S10_FuturePuck ref={registerRef(12)} isActive={currentSection === 12} />
+      <S09_Closing ref={registerRef(13)} isActive={currentSection === 13} />
 
       <NavigationDots
         current={currentSection}

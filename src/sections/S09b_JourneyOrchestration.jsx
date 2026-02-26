@@ -274,7 +274,7 @@ const S09b_JourneyOrchestration = forwardRef(
             Omni-Channel Journey Orchestration
           </h2>
           <p className="section__subtitle">
-            Real-time customer journeys that adapt across every touchpoint —
+            State Management for the web —
             powered by unified profiles and cross-channel behavioral signals.
           </p>
         </FadeIn>

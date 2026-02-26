@@ -61,26 +61,11 @@ const S04_ArchitectureGap = forwardRef(function S04_ArchitectureGap({ isActive }
 
       <FadeIn delay={0.2}>
         <p className="section__body">
-          Five symptoms of first-party data paralysis:
+          Symptoms of first-party data paralysis:
         </p>
       </FadeIn>
 
       <CompetitorGrid />
-
-      <FadeIn delay={0.5}>
-        <div className="insight-box">
-          <p className="insight-box__text">
-            Your website doesn't know that the person browsing right now
-            spent $500 in-store yesterday — because first-party data flows one way.
-            And <strong>only 11%</strong> of consumers are "very willing" to share more data,
-            while Baby Boomers are 74% more resistant than average.
-          </p>
-          <p className="insight-box__punchline">
-            Without a <strong>Data Activation Layer</strong> that maximizes the value of
-            the data customers do share, every interaction is a wasted opportunity.
-          </p>
-        </div>
-      </FadeIn>
     </Section>
   )
 })

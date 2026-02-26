@@ -6,7 +6,7 @@ import Section, { SectionContext } from '../components/Section'
 /* ═══════════════════════════════════════════════════════════════
    Subsection 1 — Bandit Math
    ═══════════════════════════════════════════════════════════════ */
-function BanditMath() {
+function BanditMath({ step = 0 }) {
   return (
     <div className="bandit">
       <div className="puck-sub">
@@ -53,34 +53,49 @@ function BanditMath() {
         </div>
       </div>
 
-      {/* Comparison cards */}
-      <div className="bandit__compare">
-        <div className="bandit__card bandit__card--vanilla">
-          <h4 className="bandit__card-title">Vanilla MAB</h4>
-          <p>
-            Learns <strong>one</strong> subject line that is "best for everyone"
-          </p>
-          <p>
-            Sally and John are sent the <strong>same</strong> message, despite
-            obvious differences
-          </p>
-          <span className="bandit__verdict bandit__verdict--warn">
-            Missing context
-          </span>
+      {/* Comparison cards — revealed progressively */}
+      {step >= 1 && (
+        <div className="bandit__compare">
+          <motion.div
+            className={`bandit__card bandit__card--vanilla${step >= 2 ? ' bandit__card--struck' : ''}`}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: step >= 2 ? 0.35 : 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <h4 className="bandit__card-title">Vanilla MAB</h4>
+            <p>
+              Learns <strong>one</strong> subject line that is "best for everyone"
+            </p>
+            <p>
+              Sally and John are sent the <strong>same</strong> message, despite
+              obvious differences
+            </p>
+            <span className="bandit__verdict bandit__verdict--warn">
+              Missing context
+            </span>
+          </motion.div>
+
+          {step >= 2 && (
+            <motion.div
+              className="bandit__card bandit__card--cmab"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <h4 className="bandit__card-title">Contextual MAB</h4>
+              <p>
+                Learns <strong>different</strong> optimal lines for different people
+              </p>
+              <p>
+                Sally gets what's best for her, John gets what's best for him
+              </p>
+              <span className="bandit__verdict bandit__verdict--good">
+                Profile-aware
+              </span>
+            </motion.div>
+          )}
         </div>
-        <div className="bandit__card bandit__card--cmab">
-          <h4 className="bandit__card-title">Contextual MAB</h4>
-          <p>
-            Learns <strong>different</strong> optimal lines for different people
-          </p>
-          <p>
-            Sally gets what's best for her, John gets what's best for him
-          </p>
-          <span className="bandit__verdict bandit__verdict--good">
-            Profile-aware
-          </span>
-        </div>
-      </div>
+      )}
     </div>
   )
 }
@@ -202,7 +217,7 @@ function EmbedVisual() {
 /* ═══════════════════════════════════════════════════════════════
    Subsection stepper (swaps between Bandit / Embed on arrow)
    ═══════════════════════════════════════════════════════════════ */
-const SUBS = [<BanditMath />, <EmbedVisual />]
+const TOTAL_STEPS = 4 // bandit 0-2, embed 3
 
 function SubsectionStepper() {
   const { isActive, fullyRevealed } = useContext(SectionContext)
@@ -225,7 +240,7 @@ function SubsectionStepper() {
       const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ']
       const prevKeys = ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace']
 
-      if (nextKeys.includes(e.key) && stepRef.current < SUBS.length - 1) {
+      if (nextKeys.includes(e.key) && stepRef.current < TOTAL_STEPS - 1) {
         stepRef.current += 1
         setStep(stepRef.current)
         e.preventDefault()
@@ -244,17 +259,20 @@ function SubsectionStepper() {
     return () => window.removeEventListener('keydown', handleKey, true)
   }, [isActive, fullyRevealed])
 
+  // Bandit steps share a key so AnimatePresence doesn't full-swap between them
+  const sectionKey = step <= 2 ? 'bandit' : 'embed'
+
   return (
     <div className="puck-content">
       <AnimatePresence mode="wait">
         <motion.div
-          key={step}
+          key={sectionKey}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -24 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          {SUBS[step]}
+          {step <= 2 ? <BanditMath step={step} /> : <EmbedVisual />}
         </motion.div>
       </AnimatePresence>
     </div>

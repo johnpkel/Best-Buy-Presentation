@@ -17,7 +17,7 @@ const S04_ArchitectureGap = forwardRef(function S04_ArchitectureGap({ isActive }
     <Section ref={ref} id="architecture-gap" isActive={isActive}>
       <FadeIn>
         <p className="section__label">The First-Party Data Shift</p>
-        <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
+        <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '22px', color: 'var(--text-muted)' }}>
           Benchmark Takeaway #4: Buyers are very picky about the data they share
         </p>
         <h2 className="section__title">
@@ -45,7 +45,7 @@ const S04_ArchitectureGap = forwardRef(function S04_ArchitectureGap({ isActive }
                 borderRadius: '8px',
                 background: item.willing ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
                 border: `1px solid ${item.willing ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)'}`,
-                fontSize: '13px',
+                fontSize: '19px',
                 color: 'var(--text-primary)',
               }}
               initial={{ opacity: 0, y: 10 }}

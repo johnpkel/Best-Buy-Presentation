@@ -40,7 +40,7 @@ const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, 
           You'll want some sort of behavioral scoring & lookalike modeling — computed
           continuously, normalized 0–100:
         </p>
-        <div style={{ maxWidth: '560px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '750px', margin: '0 auto' }}>
           {BEHAVIORAL_SCORES.map((item, i) => (
             <motion.div
               key={item.name}
@@ -49,7 +49,7 @@ const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, 
                 alignItems: 'center',
                 gap: '12px',
                 marginBottom: '6px',
-                fontSize: '13px',
+                fontSize: '19px',
               }}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -69,7 +69,7 @@ const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, 
                 />
               </div>
               <span style={{ width: '32px', fontWeight: 700, color: 'var(--text-primary)', textAlign: 'right' }}>{item.score}</span>
-              <span style={{ width: '190px', color: 'var(--text-muted)', fontSize: '11px', flexShrink: 0 }}>
+              <span style={{ width: '300px', color: 'var(--text-muted)', fontSize: '17px', flexShrink: 0 }}>
                 {item.desc}
               </span>
             </motion.div>

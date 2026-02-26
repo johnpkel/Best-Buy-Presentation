@@ -14,15 +14,15 @@ const SCATTERED = [
 ]
 
 const ORBIT = [
-  { x: 0, y: -140, rotate: 0 },
-  { x: 120, y: -80, rotate: 0 },
-  { x: 140, y: 40, rotate: 0 },
-  { x: 80, y: 130, rotate: 0 },
-  { x: -80, y: 130, rotate: 0 },
-  { x: -140, y: 40, rotate: 0 },
-  { x: -120, y: -80, rotate: 0 },
-  { x: 0, y: 160, rotate: 0 },
-  { x: 160, y: -30, rotate: 0 },
+  { x: 0, y: -200, rotate: 0 },
+  { x: 190, y: -120, rotate: 0 },
+  { x: 220, y: 50, rotate: 0 },
+  { x: 130, y: 185, rotate: 0 },
+  { x: -130, y: 185, rotate: 0 },
+  { x: -220, y: 50, rotate: 0 },
+  { x: -190, y: -120, rotate: 0 },
+  { x: 0, y: 220, rotate: 0 },
+  { x: 250, y: -40, rotate: 0 },
 ]
 
 export default function ToolScatter({ assembled = false }) {

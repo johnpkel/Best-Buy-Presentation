@@ -7,7 +7,7 @@ import ToolScatter from '../components/ToolScatter'
 const IMPACT_STATS = [
   { value: '50%', label: 'Lower CAC', color: '#34d399' },
   { value: '5–15%', label: 'Revenue Lift', color: '#6366f1' },
-  { value: '10–30%', label: 'Better Marketing ROI', color: '#f59e0b' },
+  { value: '80%', label: 'Likelihood to Purchase', color: '#f59e0b' },
 ]
 
 const S09_Closing = forwardRef(function S09_Closing({ isActive }, ref) {

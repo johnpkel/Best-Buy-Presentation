@@ -33,7 +33,7 @@ function BanditMath({ step = 0 }) {
           <div className="bandit__profile-info">
             <span className="bandit__name">Sally</span>
             <span className="bandit__desc">
-              25, single, healthy — no medical history
+              25, single, dog lover 
             </span>
           </div>
         </div>
@@ -47,7 +47,7 @@ function BanditMath({ step = 0 }) {
           <div className="bandit__profile-info">
             <span className="bandit__name">John</span>
             <span className="bandit__desc">
-              60, married, grandchildren — chronic conditions
+              60, married, grandchildren
             </span>
           </div>
         </div>

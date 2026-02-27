@@ -49,7 +49,7 @@ const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, 
                 alignItems: 'center',
                 gap: '12px',
                 marginBottom: '6px',
-                fontSize: '19px',
+                fontSize: '14px',
               }}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -69,7 +69,7 @@ const S06_IdentityCrisis = forwardRef(function S06_IdentityCrisis({ isActive }, 
                 />
               </div>
               <span style={{ width: '32px', fontWeight: 700, color: 'var(--text-primary)', textAlign: 'right' }}>{item.score}</span>
-              <span style={{ width: '300px', color: 'var(--text-muted)', fontSize: '17px', flexShrink: 0 }}>
+              <span style={{ width: '300px', color: 'var(--text-muted)', fontSize: '13px', flexShrink: 0 }}>
                 {item.desc}
               </span>
             </motion.div>

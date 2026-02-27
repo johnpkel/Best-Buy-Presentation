@@ -43,7 +43,7 @@ const S00_Hero = forwardRef(function S00_Hero(_, ref) {
         </h1>
         <motion.p
           style={{
-            fontSize: '26px',
+            fontSize: '20px',
             color: 'var(--text-secondary)',
             marginBottom: '48px',
           }}

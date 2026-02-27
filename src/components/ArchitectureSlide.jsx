@@ -163,7 +163,7 @@ function ArrowOverlay({ step, index }) {
       <motion.text
         x={nx} y={ny + 1}
         textAnchor="middle" dominantBaseline="central"
-        fill="white" fontSize="16" fontWeight="800"
+        fill="white" fontSize="12" fontWeight="800"
         fontFamily="system-ui, -apple-system, sans-serif"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 0.12 }}
@@ -209,7 +209,7 @@ function BoxOverlay({ step, index }) {
       <motion.text
         x={nx} y={ny + 1}
         textAnchor="middle" dominantBaseline="central"
-        fill="white" fontSize="16" fontWeight="800"
+        fill="white" fontSize="12" fontWeight="800"
         fontFamily="system-ui, -apple-system, sans-serif"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 0.12 }}

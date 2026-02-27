@@ -8,7 +8,7 @@ const S01_DataParadox = forwardRef(function S01_DataParadox({ isActive }, ref) {
     <Section ref={ref} id="data-paradox" dark isActive={isActive}>
       <FadeIn>
       <h2 className="section__title">Most loops are open</h2>
-        <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '22px', color: 'var(--text-muted)' }}>
+        <p className="section__subtitle" style={{ marginBottom: '8px', fontSize: '16px', color: 'var(--text-muted)' }}>
           Benchmark Takeaway #1: Buyers have a positive view of personalization
         </p>
       </FadeIn>
@@ -24,7 +24,7 @@ const S01_DataParadox = forwardRef(function S01_DataParadox({ isActive }, ref) {
             already understand their preferences.
           </p>
 
-          <p className="split__text" style={{ marginTop: '12px', fontSize: '19px', color: 'var(--text-muted)' }}>
+          <p className="split__text" style={{ marginTop: '12px', fontSize: '14px', color: 'var(--text-muted)' }}>
             <span style={{ opacity: 0.6 }}> — Contentstack Benchmark Report</span>
           </p>
         </FadeIn>

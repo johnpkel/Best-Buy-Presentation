@@ -53,6 +53,17 @@ const S00_Hero = forwardRef(function S00_Hero(_, ref) {
         >
 
         </motion.p>
+        <motion.p
+          style={{
+            fontSize: '16px',
+            color: 'var(--text-secondary)',
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+        >
+          Use your arrow keys!
+        </motion.p>
         <motion.div
           className="hero__scroll-hint"
           initial={{ opacity: 0 }}
